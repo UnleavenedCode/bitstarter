@@ -13,11 +13,12 @@ app.listen(port, function() {
 });
 */
 var express = require('express');
+var fs = require('fs');
+var maFile ="index.html";
 
-var buf = fs.readFileSync('index.html', 'utf-8');
-
-buf.get('/', function(request, response){
-    response.send(buf);
+app.get('/', function(request, response){
+    var html =fs.readFileSync(maFile).toString();
+    response.send(html);
 });
 
 var port = process.env.PORT || 5000;
